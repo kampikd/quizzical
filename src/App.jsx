@@ -1,20 +1,15 @@
-import Intro from "./components/Intro"
-import './App.css'
-import { useState } from "react"
-import Game from "./components/Game"
+import React, { useCallback, useState } from 'react';
+import Intro from './components/Intro';
+import Game from './components/Game';
+import './App.css';
 
-function App() {
-  const [started, setStarted] = useState(false)
-
-  function startGame() {
-    setStarted(true)
-  }
+export default function App() {
+  const [started, setStarted] = useState(false);
+  const startGame = useCallback(() => setStarted(true), []);
 
   return (
     <div className="App">
-      {started ? <Game /> : <Intro startGame={startGame}/>}
+      {started ? <Game /> : <Intro startGame={startGame} />}
     </div>
-  )
+  );
 }
-
-export default App
