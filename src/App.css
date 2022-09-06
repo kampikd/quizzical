@@ -1,0 +1,24 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  color: #293264;
+}
+
+.intro > h1 {
+  font-size: 32px;
+}
+
+.intro > h3 {
+  margin-top: 7px;
+  font-size: 16px;
+}
+
+.intro--btn {
+  background: #4D5B9E;
+  color: #F5F7FB;
+  margin-top: 29px;
+  font-size: 16px;
+  padding: 10px 50px;
+}
