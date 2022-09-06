@@ -1,3 +1,9 @@
+body {
+  background-image: url(./assets/blob1.png), url(./assets/blob2.png);
+  background-position: left bottom, right top;
+  background-repeat: no-repeat, no-repeat;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
