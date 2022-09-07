@@ -15,30 +15,43 @@ export default function Game() {
     return newArray;
   }
 
-  function buildAnswers(question) {
-    const correctAnswer = {
-      answer: decodeHtmlEntity(question.correct_answer),
-      correct: true,
-    };
-    const answers = question.incorrect_answers.map((answer) => ({
-      answer: decodeHtmlEntity(answer), correct: false,
-    }));
-    answers.push(correctAnswer);
-    return shuffle(answers);
-  }
-
   function decodeHtmlEntity(str) {
     const doc = new DOMParser().parseFromString(str, 'text/html');
     return doc.documentElement.textContent;
+  }
+
+  function pickAnswer(questionId, answerId) {
+    setQuestions((oldQuestions) => (
+      oldQuestions.map((oldQuestion) => (
+        oldQuestion.id === questionId ? (
+          { ...oldQuestion, pickedAnswerId: answerId }
+        ) : (
+          oldQuestion
+        )
+      ))
+    ));
+  }
+
+  function buildAnswers(question, questionId) {
+    const allAnswers = [question.correct_answer, ...question.incorrect_answers];
+    const answers = allAnswers.map((answer, index) => ({
+      id: index + 1,
+      answer: decodeHtmlEntity(answer),
+      correct: index === 0,
+      pickAnswer: () => pickAnswer(questionId, index + 1),
+    }));
+    return shuffle(answers);
   }
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=12&type=multiple')
       .then((res) => res.json())
       .then((data) => {
-        const questionObjects = data.results.map((result) => ({
+        const questionObjects = data.results.map((result, index) => ({
+          id: index,
           question: decodeHtmlEntity(result.question),
-          answers: buildAnswers(result),
+          answers: buildAnswers(result, index),
+          pickedAnswerId: null,
         }));
         setQuestions(questionObjects);
       });

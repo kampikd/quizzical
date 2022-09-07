@@ -38,7 +38,7 @@ body {
 .question {
   padding-bottom: 10px;
   border-bottom: 1px solid #DBDEF0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .question > h2 {
@@ -53,11 +53,17 @@ body {
   font-weight: 500;
 }
 
-.answers > h4 {
+.answers > button {
   border: 1px solid #4D5B9E;
   border-radius: 8px;
   min-width: 65px;
-  padding: 0px 15px;
+  padding: 2px 15px;
   cursor: pointer;
-  margin: 5px 10px;
+  margin: 0px 10px 10px;
+  background: transparent;
+}
+
+.answers > button:hover, .answers > button.picked {
+  background: #D6DBF5;
+  border: 1px solid #D6DBF5;
 }
