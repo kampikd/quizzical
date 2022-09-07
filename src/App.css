@@ -28,3 +28,36 @@ body {
   font-size: 16px;
   padding: 10px 50px;
 }
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.question {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DBDEF0;
+  margin-bottom: 10px;
+}
+
+.question > h2 {
+  text-align: left;
+  font-size: 16px;
+  margin-left: 15px;
+}
+
+.answers {
+  display: flex;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.answers > h4 {
+  border: 1px solid #4D5B9E;
+  border-radius: 8px;
+  min-width: 65px;
+  padding: 0px 15px;
+  cursor: pointer;
+  margin: 5px 10px;
+}
